@@ -2,7 +2,7 @@ package study;
 
 import java.text.ParseException;
 
-public class Test {
+public class Run {
 
 	public static void main(String[] args) throws ParseException {
 		Calendar calendar = new Calendar();

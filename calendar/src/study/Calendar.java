@@ -41,13 +41,10 @@ public class Calendar {
 		System.out.println("-------------------");
 
 		// 윤년 체크
-
 		int maxDays;
 
 		// 윤년 여부 적용
 		maxDays = getMaxDayOfMonth(year, month);
-
-		// 해당 월 요일 맞추기
 
 		// 해당 월에 맞는 일수 출력
 		for (int i = 1; i < getWeekDay(year, month, 1); i++) {
@@ -63,9 +60,7 @@ public class Calendar {
 				System.out.println();
 				continue;
 			}
-
 		}
-
 	}
 
 	private int getMaxDayOfMonth(int year, int month) {
@@ -76,7 +71,7 @@ public class Calendar {
 		}
 	}
 
-	// 처음 출력 화면 년과 월을 입력한다.
+	// 달력 화면 출력
 	public void setMonth() {
 		Scanner sc = new Scanner(System.in);
 		boolean run = true;
@@ -95,7 +90,6 @@ public class Calendar {
 				continue;
 			}
 		}
-
 		while (monthRun) {
 			System.out.print("월 : ");
 			month = sc.nextInt();
@@ -109,7 +103,6 @@ public class Calendar {
 				continue;
 			}
 		}
-
 		printCalendar(year, month);
 
 	}
@@ -123,14 +116,10 @@ public class Calendar {
 			int delta = isLeapYear(i) ? 366 : 365;
 			count += delta;
 		}
-
-		// System.out.println(count);
-
 		for (int i = 1; i < month; i++) {
 			int delta = getMaxDayOfMonth(year, i);
 			count += delta;
 		}
-
 		count += day;
 
 		int weekDay = (count + STANDARD_WEEKDAY) % 7;
@@ -138,6 +127,7 @@ public class Calendar {
 		return weekDay;
 	}
 
+	// 일정 등록 기능 메소드
 	public void register(String enterDate, String plan) throws ParseException {
 		Date date = new SimpleDateFormat("yyyy-MM-dd").parse(enterDate);
 		System.out.println(date);
@@ -145,8 +135,8 @@ public class Calendar {
 		// 파일 IO로 저장하기
 		saveFile = enterDate;
 		File f = new File(saveFile);
-		if(!f.exists()) {
-			//파일이 존재하지 않으면
+		if (!f.exists()) {
+			// 파일이 존재하지 않으면
 			String content = enterDate + "\n" + plan;
 			System.out.println(content);
 			try {
@@ -157,15 +147,14 @@ public class Calendar {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}else {
-			
+		} else {
+
 		}
-		
 
 	}
 
+	// 일정 검색 기능 메소드
 	public void searchPlan(String enterDate) throws ParseException {
-
 		int end = 0;
 
 		File f = new File(enterDate);
@@ -182,20 +171,18 @@ public class Calendar {
 				String data = new String(contentChar, 0, end);
 				content = data.split("\n");
 			}
-			
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		for(int i=0; i<content.length;i++) {
-			if(i==0) {
-				System.out.println("날짜 : "+content[i]);
-			}else if(i==1) {
-				System.out.println("일정내용 : "+content[i]);
+		for (int i = 0; i < content.length; i++) {
+			if (i == 0) {
+				System.out.println("날짜 : " + content[i]);
+			} else if (i == 1) {
+				System.out.println("일정내용 : " + content[i]);
 			}
-			
 		}
-
 	}
 
 }

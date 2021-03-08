@@ -71,7 +71,7 @@ public class Front {
 
 		System.out.println("입력하신 날짜의 일정입니다.");
 		cal.searchPlan(date);
-		
+
 	}
 
 }

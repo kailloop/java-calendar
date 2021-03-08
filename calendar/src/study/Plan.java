@@ -1,11 +1,10 @@
 package study;
 
 public class Plan {
-	
+
 	private String date;
 	private String content;
-	
-	
+
 	public Plan() {
 		// TODO Auto-generated constructor stub
 	}
@@ -36,12 +35,11 @@ public class Plan {
 	public String toString() {
 		return "Plan [date=" + date + ", content=" + content + "]";
 	}
-	
+
 	public String saveString() {
 		String ret = "";
 		ret += date.toString() + content;
 		return ret;
 	}
-	
 
 }
